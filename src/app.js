@@ -1,19 +1,17 @@
 import express from 'express';
 import fs from 'fs';
-import dotenv from 'dotenv';
+import config from './config/index.js';
 
-dotenv.config();
-const PORT=process.env.PORT || 3000;
-const NAME=process.env.NAME;
-const VERSION=process.env.VERSION;
+
+
 
 const app = express();
 
 app.get('/', (req, res) => {
   res.json({
-    port: PORT, 
-    name: NAME,
-    version: VERSION,
+    port: config.port, 
+    name: config.name,
+    version: config.version,
   });
 });
 
@@ -35,6 +33,6 @@ app.get('/not-found', (req, res) => {
   res.status(404).send('Page not found');  
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port${PORT}.....`);
+app.listen(config.port, () => {
+  console.log(`Server is running on port ${config.port}.....`);
 });
