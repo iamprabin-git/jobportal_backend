@@ -2,6 +2,7 @@ import express from 'express';
 import productRoute from './routes/productRoute.js';
 import config from './config/index.js';
 import bodyParser from 'body-parser';
+import mongoConnect from './utils/database.js';
 
 const app = express();
 
@@ -17,7 +18,13 @@ app.get('/', (req, res) => {
 
 app.use("/products", productRoute);
 
-
+mongoConnect((err, client) => {
+  if (err) {
+    console.error("Error connecting to database", err);
+  } else {
+    console.log("Connected to database");
+  }
+});
 app.listen(config.port, () => {
   console.log(`Server is running on port ${config.port}.....`);
 });
