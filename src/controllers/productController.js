@@ -11,7 +11,10 @@ const createProduct = (req, res) => {
 };
 
 const getProductById = (req, res) => {
-    res.send("one product");
+    const id = req.params.id;
+
+    const product = productService.getProductById(id);
+   res.json(product);
 };
 
 export default { getProducts, createProduct, getProductById };

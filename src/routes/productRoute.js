@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
     res.send("Product Route");
 });
 
-router.get("/one", productController.getProductById);
+router.get("/:id", productController.getProductById);
 
 router.post("/", productController.createProduct);
 
