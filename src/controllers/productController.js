@@ -2,7 +2,8 @@ import productService from "../services/productService.js";
 
 
 const getProducts = (req, res) => {
-   const products = productService.getProducts();
+
+   const products = productService.getProducts(req.query);
    res.status(200).json(products);
 };
 
