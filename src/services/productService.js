@@ -12,4 +12,10 @@ const getProductById = (id) => {
     return foundProduct ? { ...foundProduct } : null;
 };
 
-export default { getProducts, getProductById };
+const createProduct = (data) => {
+    products.push(data);
+    fs.writeFileSync("./src/data/products.json", JSON.stringify(products));
+};
+
+
+export default { getProducts, getProductById, createProduct };

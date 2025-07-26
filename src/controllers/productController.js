@@ -8,7 +8,9 @@ const getProducts = (req, res) => {
 };
 
 const createProduct = (req, res) => {
-    res.send("Product created successfully");
+ productService.createProduct(req.body);
+    res.json(req.body);
+    res.status(201).send("Product created successfully");
 };
 
 const getProductById = (req, res) => {
