@@ -1,4 +1,6 @@
 import fs from "fs";
+import Product from "../models/Product.js";
+
 const rawData = fs.readFileSync("./src/data/products.json", "utf-8");
     const products = JSON.parse(rawData);
 const getProducts = (query) => {
@@ -13,8 +15,7 @@ const getProductById = (id) => {
 };
 
 const createProduct = (data) => {
-    products.push(data);
-    fs.writeFileSync("./src/data/products.json", JSON.stringify(products));
+  Product.create(data);
 };
 
 
